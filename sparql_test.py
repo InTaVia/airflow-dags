@@ -18,7 +18,6 @@
 
 """Example DAG demonstrating the usage of the PythonOperator."""
 import time
-from pprint import pprint
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
@@ -50,7 +49,7 @@ with DAG(
         sparql.setQuery(query)
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
-        pprint(results)
+        print(results)
 
     virtualenv_task = PythonVirtualenvOperator(
         task_id="virtualenv_python",
